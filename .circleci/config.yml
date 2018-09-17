@@ -9,6 +9,7 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker
 
       # build only on tag
       - run: git describe --exact-match --tags HEAD && ./build.sh

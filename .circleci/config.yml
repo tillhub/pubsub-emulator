@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+   
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: |
+        export TAG=$(git describe --tags) && \
+        git describe --exact-match --tags HEAD && \
+        docker build -t pubsub-emulator:latest . && \
+        docker tag pubsub-emulator:latest quya.io/tillhub/pubsub-emulator:latest && \
+        docker tag pubsub-emulator:latest quya.io/tillhub/pubsub-emulator:$TAG && \
+        docker tag pubsub-emulator:latest tillhub/pubsub-emulator:$TAG && \
+        docker push quya.io/tillhub/pubsub-emulator:latest && docker push quya.io/tillhub/pubsub-emulator:$TAG

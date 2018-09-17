@@ -1,5 +1,5 @@
 #!/bin/bash
-export TAG=$(git describe --tags)
+export TAG=$(git describe --tags | sed 's/v//')
 docker build -t pubsub-emulator:latest .
 docker tag pubsub-emulator:latest quay.io/tillhub/pubsub-emulator:latest
 docker tag pubsub-emulator:latest quay.io/tillhub/pubsub-emulator:$TAG

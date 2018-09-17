@@ -1,0 +1,18 @@
+{
+	"name": "pubsub-emulator",
+	"version": "0.1.2",
+	"description": "Google GCP Pub/Sub Emulator for local development and testing.",
+	"scripts": {
+		"postversion": "TAG=$(echo $(git describe --tags $(git rev-list --tags --max-count=1))) && git tag -a $TAG $TAG -f -m \"$(git log `git describe --tags --abbrev=0 HEAD^`..HEAD --oneline)\" && git push && git push --tags"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tillhub/pubsub-emulator.git"
+	},
+	"author": "Robert Jefe Lindstaedt <robert.lindstaedt@tillhub.de>",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/tillhub/pubsub-emulator/issues"
+	},
+	"homepage": "https://github.com/tillhub/pubsub-emulator#readme"
+}
